@@ -45,6 +45,7 @@ class UsageModel {
         guard let d = lastUpdated else { return "Never" }
         let f = RelativeDateTimeFormatter()
         f.unitsStyle = .abbreviated
+        f.locale = Locale(identifier: "en_US")
         return f.localizedString(for: d, relativeTo: Date())
     }
 }

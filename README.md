@@ -2,9 +2,7 @@
 
 A macOS menu bar app that shows your Claude token usage at a glance.
 
-```
-Token  36% · resets 5:59pm
-```
+![ClaudeBar screenshot](screenshot.png)
 
 ## Requirements
 
