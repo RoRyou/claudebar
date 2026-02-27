@@ -32,7 +32,13 @@ def get_usage():
         os.dup2(slave, 2)
         os.close(slave)
         home = env.get("HOME", os.path.expanduser("~"))
-        trusted_dir = home
+        # Use a trusted project dir to bypass workspace trust prompt
+        candidates = [
+            f"{home}/Documents/MyProduct/system/claude_pect",
+            f"{home}/Documents",
+            home,
+        ]
+        trusted_dir = next((d for d in candidates if os.path.exists(d)), home)
         os.chdir(trusted_dir)
         os.execvpe("/bin/bash", [
             "/bin/bash", "-c",
